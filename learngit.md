@@ -66,7 +66,40 @@ git restore filename // 把工作区的某个文件撤销
 
 
 
-##### 3、
+##### 3、github
+1. SSH
+> github拉代码需要ssh验证
+
+> git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。
+- 1. 生成秘钥
+```
+ssh-keygen -t rsa -C "github邮箱"
+按3个回车，密码为空这里一般不使用密钥。
+最后得到了两个文件：id_rsa和id_rsa.pub
+```
+- 2. 在github上配置
+```
+Account>settings>SSH and GPG keys>添加sshkey
+在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥
+```
+- 3. 测试是否成功
+```
+ssh -T git@github.com
+回复yes，若出现了你github的昵称则设置成功
+```
+
+2. 上传到github
+- 在项目里设置remote地址
+```
+git remote add origin git@github.com:lpp864019150/learngit.git
+```
+- 上传
+```
+git push -u origin master
+```
+
+
+3. 
 
 
 
