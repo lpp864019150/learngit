@@ -1,9 +1,9 @@
-##### 0、参考文档
+### 0、参考文档
 1. [Git教程（完整）](https://blog.csdn.net/weixin_42152081/article/details/80558282)
 2. [Git版本恢复命令reset和revert](https://blog.csdn.net/xybelieve1990/article/details/62885292)
 3. [github官方指引](https://guides.github.com/activities/hello-world/)
 4. [使用git克隆指定分支的代码](https://blog.csdn.net/dubo_csdn/article/details/81743495)
-##### 1、创建项目
+### 1、创建项目
 - [Git教程（完整）](https://blog.csdn.net/weixin_42152081/article/details/80558282)
 0. 安装Git
 ```
@@ -27,7 +27,7 @@ git init
 
 3. 创建完毕
 
-##### 2、客户端使用
+### 2、客户端使用
 0. 与SVN的差异
 > git以本地作为一个仓库，修改提交都在本地生效，只有最后的推送到远程才是代码上交合并；SVN的每次修改提交都是最终的代码上交合并
 
@@ -141,7 +141,7 @@ git branche -d branchName // 修复完了，删除之
 > 所有这些操作都需要在同一工作区操作
 
 
-##### 3、github
+### 3、github
 1. SSH
 > github拉代码需要ssh验证
 
@@ -182,7 +182,7 @@ git clone -b branches git@github.com:lpp864019150/learngit.git dirname // 可以
 4. create pull request 
 - [github官方指引](https://guides.github.com/activities/hello-world/)
 
-##### 4、GIT分支管理
+### 4、GIT分支管理
 0. [一个成功的Git分支模型](https://www.jianshu.com/p/b357df6794e3)
 1. master主分支
 > 主分支，一般作为稳定版，默认版本，与线上保持一致，所以分支需要发布最终都要合并到master
