@@ -1,5 +1,7 @@
-##### 0、
-1. [参考文档](https://blog.csdn.net/weixin_42152081/article/details/80558282)
+##### 0、参考文档
+1. [Git教程（完整）](https://blog.csdn.net/weixin_42152081/article/details/80558282)
+2. [Git版本恢复命令reset和revert](https://blog.csdn.net/xybelieve1990/article/details/62885292)
+3. [github官方指引](https://guides.github.com/activities/hello-world/)
 ##### 1、创建项目
 0. 安装Git
 ```
@@ -55,15 +57,83 @@ git diff // 查看当前具体变动内容
 git log --pretty=oneline
 ```
 5. 回退版本，撤销修改
+- 本地回退，未进入stage
+```
+git checkout --filename // 直接checkout文件即可
+git checkout . // 本地所有回退
+
+// 或使用restore
+git restore filename // 把工作区的某个文件撤销
+git restore . // 放弃所有修改
+```
+- 已提交到stage
+```
+git restore --staged filename // 把暂存区的某个文件撤销
+
+// 或者使用reset
+git rest HEAD filename // 指定文件撤回
+git rest HEAD . // 放弃所有缓存
+```
+- 已commit
 ```
 git reset --hard HEAD^ // 回退到上一版本 HEAD^^(上两个版本)
 git reset --hard 0455g // 指定版本，一般取commit id的前5位
-
-git reset HEAD filename // 把暂存区的某个文件撤销
-git restore --staged filename // 把暂存区的某个文件撤销
-git restore filename // 把工作区的某个文件撤销
 ```
+- 已提交到remote，需要回退版本
+```
+git revert commit-id // 回滚到某个提交
+git commit -a -m "重新提交回滚后的内容即可回到之前版本"
+git push origin master
+```
+- reset与revert的区别
+>第一:上面我们说的如果你已经push到线上代码库, reset 删除指定commit以后,你git push可能导致一大堆冲突.但是revert 并不会.
 
+>第二:如果在日后现有分支和历史分支需要合并的时候,reset 恢复部分的代码依然会出现在历史分支里.但是revert 方向提交的commit 并不会出现在历史分支里.
+
+>第三:reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向后移动了,而 revert 是在正常的commit历史中再commit一次,只不过是反向提交,他的 HEAD 是一直向前的.
+
+
+6. 拉取
+```
+git fetch // 获取
+git merge // 合并
+
+// 也可合并使用
+git pull
+```
+7. 分支
+```
+查看各个分支当前所指的对象   git log --oneline --decorate
+
+项目分叉历史  git log --oneline --decorate --graph --all
+
+分支创建  git branch testing
+
+分支切换  git checkout testing
+
+创建加切换 git checkout -b testing
+
+分支都会向前移动一步  git commit -m "A"  (ABCD....)
+
+创建分支 git checkout dev
+
+代表切换分支   git checkout -b  dev 
+
+查看当前分支 git branch
+
+提交分支 git add readme.txt 
+
+创建分支下的分支  git commit -m "d"      (git commit -m “branch test”)
+
+把分支移到主分支上 git checkout master
+
+合并分支   git merge dev
+
+删除分支  git branch -d dev
+————————————————
+版权声明：本文为CSDN博主「bobob_」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/dubo_csdn/article/details/81743495
+```
 
 
 ##### 3、github
@@ -97,10 +167,16 @@ git remote add origin git@github.com:lpp864019150/learngit.git
 ```
 git push -u origin master
 ```
-
-
-3. 
-
+3. clone
+```
+git clone -b branches git@github.com:lpp864019150/learngit.git dirname // 可以设置本地目录名，默认为远程同名
+// 可以使用-b指定clone的分支，默认为master
+```
+4. create pull request 
+```
+git pull
+git push
+```
 
 
 ##### 4、
