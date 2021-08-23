@@ -49,8 +49,8 @@ git commit -m "备注信息" // 把stage里的内容提交到仓库
 git commit -a -m "备注信息" 
 ```
 - 只有放入了stage缓存区的内容才会被提交
-- 缓存区需要执行```git add```才会被放入
-- ```git commit -a```会把变动的文件(新文件不生效)放入stage并提交到仓库，慎用
+- 缓存区需要执行`git add`才会被放入
+- `git commit -a`会把变动的文件(新文件不生效)放入stage并提交到仓库，慎用
 ##### 3. 查看状态，差异
 ```
 git status // 查看状态
@@ -136,10 +136,10 @@ git branch -d branchName // 删除分支
 ##### 8. 合并
 > [3.2 Git 分支 - 分支的新建与合并](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6)
 ```
-git checkout -b branchName fromBranchName // 创建并切换到新分支，比如修复bug
+git checkout -b branchName fromBranchName // 创建(可指定从哪创建)并切换到新分支，比如修复bug
 git commit -a -m "修复完bug，提交"
 git checkout master // 切回master
-git merge branchName // 把修复完bug的分支合并到master分支
+git merge branchName // 把修复完bug的分支合并到master分支，merge到主分支需要慎重，一般不会这样操作，可参考后面Github的pull request
 git branche -d branchName // 修复完了，删除之
 ```
 > 所有这些操作都需要在同一工作区操作
@@ -185,10 +185,10 @@ git push <远程主机名> <本地分支名>:<远程分支名>
 git clone -b branches git@github.com:lpp864019150/learngit.git dirname 
 ```
 ##### 4. create pull request 
-> 直接参照官方指引操作即可 [github官方指引](https://guides.github.com/activities/hello-world/)
+> 直接参照官方指引操作即可 [Github官方指引](https://guides.github.com/activities/hello-world/)、[Github流程 - 理解分支流转](https://guides.github.com/introduction/flow/)
 
 ### 4、GIT分支管理
-##### 0. [一个成功的Git分支模型](https://www.jianshu.com/p/b357df6794e3)
+##### 0. [一个成功的Git分支模型](https://www.jianshu.com/p/b357df6794e3)、[Github流程 - 理解分支流转](https://guides.github.com/introduction/flow/)
 ##### 1. master主分支
 > 主分支，一般作为稳定版，默认版本，与线上保持一致，所以分支需要发布最终都要合并到`master`
 ##### 2. develop主分支
@@ -200,4 +200,4 @@ git clone -b branches git@github.com:lpp864019150/learngit.git dirname
 
 > ps. 与我们目前SNV的dev分支类似，作为主开发分支，当前开发版本
 ##### 5. hotfix辅助分支
-> 修复分支，一般作为紧急bug修复，从`master`分支来，合并到`develop`进行测试，最后合并到master分支并打标签，以`hotfix-`作为前缀，用完即删
+> 修复分支，一般作为紧急bug修复，从`master`分支来，合并到`develop`进行测试，最后合并到`master`分支并打标签，以`hotfix-`作为前缀，用完即删
